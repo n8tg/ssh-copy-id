@@ -2,7 +2,7 @@
 This is a a lame PowerShell implementation of OpenSSH's ssh-copy-id
 
 ssh-copy-id is a PowerShell script that uses ssh to log into a remote machine and append the
-indicated identity file to that machine's ~/.ssh/authorized_keys file. By default, it installs the key(s) stored in "$env:USERPROFILE\\.ssh\id_rsa.pub".  
+indicated identity file to that machine's `~/.ssh/authorized_keys` file. By default, it installs the key(s) stored in `$env:USERPROFILE\.ssh\id_rsa.pub`.  
 
 CAUTION: This script is not declarative, it will append key(s) into authorized_keys that already exist. It may also be broken and overwrite your authorized_keys file. 
 
