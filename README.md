@@ -13,7 +13,7 @@ This is published as a module in the PowerShell Gallery.
     Install-Module -Name SSH-Copy-ID 
 
 ### Installing SSH-Copy-ID the hard way
-Copy the SSH-Copy-ID folder to any one of the module folders that's returned by `$Env:PSModulePath`. Then import it into your PowerShell session. This may be necessary if you can't install the module using the PowerShell Gallery. 
+Copy the SSH-Copy-ID folder to any one of the module folders that's returned by `$Env:PSModulePath`. Then import SSH-Copy-ID into your PowerShell session. This may be necessary if you can't install the module using the PowerShell Gallery. 
 
     PS> $Env:PSModulePath
     C:\Users\n8tg\OneDrive\OneDrive Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
@@ -32,10 +32,11 @@ See: https://docs.microsoft.com/en-us/powershell/scripting/gallery/overview?view
 ## Examples
 
 ### Unix username style
-    ssh-copy-id root@172.16.1.10  
+    ssh-copy-id root@172.16.1.10 
+    ssh-copy-id 172.16.1.10 -l root 
 
 ### Unix username style with a specified key file
-    ssh-copy-id root@172.16.1.10 -l C:\users\n8tg\SpecialKeyDir\key.pub
+    ssh-copy-id root@172.16.1.10 -i C:\users\n8tg\SpecialKeyDir\key.pub
 
 ### PowerShell parameter style with a username
     ssh-copy-id -RemoteHost 172.16.1.10 -RemoteUser root  
@@ -44,5 +45,5 @@ See: https://docs.microsoft.com/en-us/powershell/scripting/gallery/overview?view
     ssh-copy-id -RemoteHost 172.16.1.10 -RemoteUser root -KeyFile C:\users\n8tg\SpecialKeyDir\key.pub
 
 ### You can mix and match if you choose
-    ssh-copy-id -RemoteHost root@172.16.1.10 -l c:\test\test
+    ssh-copy-id -RemoteHost root@172.16.1.10 -i c:\why\key.pub
 

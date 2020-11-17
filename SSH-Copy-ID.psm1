@@ -33,7 +33,11 @@ function ssh-copy-id
 
 .EXAMPLE
 
-    PS> ssh-copy-id root@172.16.1.10 -l C:\users\n8tg\SpecialKeyDir\key.pub
+    PS> ssh-copy-id 172.16.1.10 -l root
+
+.EXAMPLE
+
+    PS> ssh-copy-id root@172.16.1.10 -i C:\users\n8tg\SpecialKeyDir\key.pub
 
 .EXAMPLE
 
@@ -60,10 +64,11 @@ https://github.com/n8tg/ssh-copy-id
         [string]
         $RemoteHost,
 
+        [Alias('l')]
         [string]
         $RemoteUser,
 
-        [Alias('l')]
+        [Alias('i')]
         [string]
         $KeyFile = "$env:USERPROFILE\.ssh\id_rsa.pub"
     )  
