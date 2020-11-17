@@ -20,6 +20,8 @@ Copy the SSH-Copy-ID folder to any one of the module folders that's returned by 
 
     PS> Copy-Item -Path ".\SSH-Copy-ID\" -Destination "C:\Users\n8tg\OneDrive\OneDrive Documents\WindowsPowerShell\Modules" -Recurse
 
+    PS> Import-Module SSH-Copy-ID
+
 ### Getting access to the PowerShell Gallery
 See: https://docs.microsoft.com/en-us/powershell/scripting/gallery/overview?view=powershell-7.1
 
