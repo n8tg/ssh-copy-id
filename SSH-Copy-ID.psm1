@@ -19,6 +19,9 @@ function ssh-copy-id
 .PARAMETER KeyFile
     A path of the keyfile to be installed.
 
+.PARAMETER RemotePort
+    SSH will attempt to connect to this port on the remote host. Defaults to 22
+
 .INPUTS
 
     None at the moment.
@@ -34,6 +37,10 @@ function ssh-copy-id
 .EXAMPLE
 
     PS> ssh-copy-id 172.16.1.10 -l root
+
+.EXAMPLE
+
+    PS> ssh-copy-id 172.16.1.10 -p 2222
 
 .EXAMPLE
 
@@ -68,6 +75,10 @@ https://github.com/n8tg/ssh-copy-id
         [string]
         $RemoteUser,
 
+        [Alias('p')]
+        [string]
+        $RemotePort = 22,
+
         [Alias('i')]
         [string]
         $KeyFile = "$env:USERPROFILE\.ssh\id_rsa.pub"
@@ -85,9 +96,9 @@ https://github.com/n8tg/ssh-copy-id
         
         try{
             if($RemoteUser){
-                Get-Content $KeyFile | ssh $RemoteHost -l $RemoteUser "cd; umask 077; mkdir -p `".ssh/`" && { [ -z \`tail -1c .ssh/authorized_keys 2>/dev/null\` ] || echo >> .ssh/authorized_keys; } && cat >> .ssh/authorized_keys || exit 1; "
+                Get-Content $KeyFile | ssh $RemoteHost -p $RemotePort -l $RemoteUser "cd; umask 077; mkdir -p `".ssh/`" && { [ -z \`tail -1c .ssh/authorized_keys 2>/dev/null\` ] || echo >> .ssh/authorized_keys; } && cat >> .ssh/authorized_keys || exit 1; "
             }else{
-                Get-Content $KeyFile | ssh $RemoteHost "cd; umask 077; mkdir -p `".ssh/`" && { [ -z \`tail -1c .ssh/authorized_keys 2>/dev/null\` ] || echo >> .ssh/authorized_keys; } && cat >> .ssh/authorized_keys || exit 1; "
+                Get-Content $KeyFile | ssh $RemoteHost -p $RemotePort "cd; umask 077; mkdir -p `".ssh/`" && { [ -z \`tail -1c .ssh/authorized_keys 2>/dev/null\` ] || echo >> .ssh/authorized_keys; } && cat >> .ssh/authorized_keys || exit 1; "
             }
         } catch {
             Write-Warning "An error occurred when installing the key"
