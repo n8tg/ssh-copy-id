@@ -1,7 +1,7 @@
 # ARCHIVED - ssh-copy-id
 
-[!WARNING]
-This script is no longer maintained. Thanks for using it, I hope it was able to make life a little easier. I'm no longer using Windows and dragging out a VM or my old tower isn't on my list of to-do's these days.
+> [!WARNING]
+> This script is no longer maintained. Thanks for using it, I hope it was able to make life a little easier. I'm no longer using Windows and dragging out a VM or my old tower isn't on my list of to-do's these days.
 
 This is a a lame PowerShell implementation of OpenSSH's ssh-copy-id
 
